@@ -12,23 +12,11 @@ public class Main {
         //Сортировка
         java.util.Collections.sort(collection);
 
-        Map<String, Integer> map = statistics(collection);
+        HashMap<String, Integer> map = statistics(collection);
 
         System.out.println("Отсортированные по алфавиту слова:\n" + sortList(collection) + "\n");
         System.out.println("Статистика повторений слов:\n" + map + "\n");
-
-
-
-        //нахождение слова с наибольшим повторением, не смогла сделать в отдельном методе, я его закоментила
-        for (Map.Entry<String, Integer> entry : map.entrySet())
-        {
-            if (maxEntry == null || entry.getValue().compareTo(maxEntry.getValue()) > 0)
-            {
-                maxEntry = entry;
-            }
-        }
-
-        System.out.println("Слово с наибольшим количеством повторений - " + maxEntry.getKey() + ", повторяется " + maxEntry.getValue() + " раза");
+        maxCountWord(map);
     }
 
     public static List readFile(String filePath) throws IOException {
@@ -58,7 +46,7 @@ public class Main {
         return list;
     }
 
-    /*public static void maxCountWord (HashMap map){
+    public static void maxCountWord (HashMap<String, Integer> map){
         Map.Entry<String, Integer> maxEntry = null;
 
         for (Map.Entry<String, Integer> entry : map.entrySet())
@@ -69,6 +57,6 @@ public class Main {
             }
         }
          System.out.println("Слово с наибольшим количеством повторений - " + maxEntry.getKey() + ", повторяется " + maxEntry.getValue() + " раза");
-    }*/
+    }
 
 }
